@@ -17,6 +17,10 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "compression": "^1.8.0"
+    "compression": "^1.8.0",
+    "dotenv": "^17.2.0",
+    "mongoose": "^8.16.3",
+    "os": "^0.1.2",
+    "prosess": "^0.0.3"
   }
 }
