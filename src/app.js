@@ -9,7 +9,9 @@ const app = express()
 
 app.use(morgan("dev"))
 app.use(helmet())
-app.use(compression())  
+app.use(compression())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // app.use(morgan("combined"))
 // morgan("common")
@@ -24,16 +26,9 @@ require('./dbs/init.mongodb')
 const { checkOverLoad } = require('./helpers/check.connect')
 checkOverLoad()
 
-// init routes 
-app.get('/', (req, res, next) => {
-    const strCompress = 'Hello compress'
+// init routes
 
-    return res.status(200).json({
-        message: 'Welcome Fantipjs',
-        metadata: strCompress.repeat(10000)
-    })
-})
-
+app.use('/' ,require('./routes'))  
 // handling error
 
 module.exports = app
